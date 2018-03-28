@@ -53,6 +53,9 @@ let server = http.createServer(function(request, response){
         pg13Movies(response);
     }else if(request.url === "/distributor" && request.method == "GET"){
         distributorSort(response);
+    }else {
+        console.log("Something went wrong");
+        response.end("404 Error, the requested page does not exist.")
     }
 });
 
