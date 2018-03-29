@@ -3,13 +3,13 @@ const fs = require('fs');
 const data = require('./top_2018_movies.json');
 
 function allMovies(response){
-    response.write('This is a list of the top 100 movies released in 2017/18:' + "\n");
+    response.write('This is a list of the top 100 movies released in 2017/18:' + "\n" + "\n");
     data.forEach(x => response.write(x.movie + "\n"));
     response.end();
 }
 
 function actionMovies(response){
-    response.write('This is a list of action movies from 2017/2018 that grossed over 20 million dollars:' + "\n");
+    response.write('This is a list of action movies from 2017/2018 that grossed over 20 million dollars:' + "\n" + "\n");
     for(i=0;i<data.length;i++){
         if(data[i].genre === "Action" && data[i].gross > 20000000){
             response.write(data[i].movie + "\n");
@@ -19,7 +19,7 @@ function actionMovies(response){
 };
 
 function pg13Movies(response){
-    response.write('This is a list of all PG-13 movies from 2017/2018 that sold between 1 and 5 million tickets:' + "\n");
+    response.write('This is a list of all PG-13 movies from 2017/2018 that sold between 1 and 5 million tickets:' + "\n"+ "\n");
     data.forEach(x => {if(x.mpaa === "PG-13" && x.tickets_sold <= 5000000 && x.tickets_sold >= 1000000){
             response.write(x.movie + "\n")
         }
@@ -34,7 +34,7 @@ function distributorSort(response){
         return 0;
     });
     response.write('This is a list of movies sorted by distributor:' + "\n" + "\n");
-    data.forEach(x => response.write("Movie: " + x.movie + "    Distributor: " +x.distributor + "\n"));
+    data.forEach(x => response.write("Movie: " + x.movie + "    Distributor: " + x.distributor + "\n"));
     response.end();
 }
 
